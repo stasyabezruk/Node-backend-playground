@@ -1,0 +1,45 @@
+# Project Context
+
+This is a Node.js backend API using Express 5, TypeScript, and Prisma ORM with PostgreSQL.
+
+## Tech Stack
+
+- Runtime: Node.js
+- Framework: Express 5
+- Language: TypeScript (strict mode)
+- ORM: Prisma with PostgreSQL adapter
+- Validation: Zod
+- Database: PostgreSQL 16
+
+## Project Structure
+
+- `src/controllers/` - Request handlers (thin, delegate to services)
+- `src/services/` - Business logic
+- `src/routes/` - Route definitions
+- `src/middlewares/` - Express middlewares
+- `src/validators/` - Zod validation schemas
+- `src/errors/` - Custom error classes
+- `src/db/` - Database client setup
+
+## Code Style
+
+- Use ES modules with TypeScript
+- Prefer async/await over callbacks
+- Use named exports
+- Use camelCase for variables and functions
+- Use PascalCase for classes and types
+- Keep controllers thin - business logic belongs in services
+- Throw `AppError` for expected errors with appropriate status codes
+
+## Patterns
+
+- Controller → Service → Prisma pattern
+- Centralized error handling via error middleware
+- Validate request data with Zod before processing
+
+## Commands
+
+- `npm run dev` - Start dev server
+- `npm run build` - Build for production
+- `npx prisma migrate dev` - Run migrations
+- `npx prisma studio` - Open database GUI
