@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
 import { createUser, getUsers } from "../services/user.service";
 import { AppError } from "../errors/app-error";
+import { createUserSchema } from "../dto/create-user.dto";
 
 export async function createUserHandler(req: Request, res: Response) {
-  const { email, name } = req.body;
+  const parseResult = createUserSchema.safeParse(req.body);
 
-  if (!email) {
-    throw new AppError("Email обязателен", 400);
+  if (!parseResult.success) {
+    throw new AppError("Невалидные данные", 400);
   }
+
+  const { email, name } = parseResult.data;
 
   const user = await createUser(email, name);
   res.status(201).json(user);
