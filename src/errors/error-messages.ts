@@ -5,6 +5,7 @@ export const ErrorMessage: Record<string, string> = {
   [ErrorCode.USER_NOT_FOUND]: "User not found",
   [ErrorCode.USER_ALREADY_EXISTS]: "User with this email already exists",
   [ErrorCode.INVALID_USER_DATA]: "Invalid user data",
+  [ErrorCode.INVALID_REGISTRATION_DATA]: "Invalid registration data",
 
   // Role errors
   [ErrorCode.ROLE_NOT_FOUND]: "Role not found",

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getUsersHandler } from "../controllers/user.controller";
+import { registerHandler } from "../controllers/auth.controller";
 import { asyncHandler } from "../utils/async-handler";
 
 const router = Router();
 
-router.get("/users", asyncHandler(getUsersHandler));
+router.post("/auth/register", asyncHandler(registerHandler));
 
 export default router;
