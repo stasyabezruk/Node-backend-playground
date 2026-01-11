@@ -1,0 +1,18 @@
+export const ErrorCode = {
+  // User errors
+  USER_NOT_FOUND: "USER_NOT_FOUND",
+  USER_ALREADY_EXISTS: "USER_ALREADY_EXISTS",
+  INVALID_USER_DATA: "INVALID_USER_DATA",
+
+  // Role errors
+  ROLE_NOT_FOUND: "ROLE_NOT_FOUND",
+  ROLE_ALREADY_ASSIGNED: "ROLE_ALREADY_ASSIGNED",
+  INVALID_ROLE_DATA: "INVALID_ROLE_DATA",
+
+  // General errors
+  VALIDATION_ERROR: "VALIDATION_ERROR",
+  NOT_FOUND: "NOT_FOUND",
+  INTERNAL_ERROR: "INTERNAL_ERROR",
+} as const;
+
+export type ErrorCodeType = (typeof ErrorCode)[keyof typeof ErrorCode];

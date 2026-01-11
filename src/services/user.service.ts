@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { prisma } from "../db/prisma";
 import { AppError } from "../errors/app-error";
+import { ErrorCode } from "../errors/error-codes";
 
 export async function createUser(email: string, name?: string) {
   try {
@@ -15,7 +16,7 @@ export async function createUser(email: string, name?: string) {
       error instanceof Prisma.PrismaClientKnownRequestError &&
       error.code === "P2002"
     ) {
-      throw new AppError("Пользователь с таким email уже существует", 409);
+      throw new AppError(ErrorCode.USER_ALREADY_EXISTS, 409);
     }
 
     throw error;
