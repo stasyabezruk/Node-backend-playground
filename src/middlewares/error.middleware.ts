@@ -9,6 +9,7 @@ export function errorMiddleware(
 ) {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
+      statusCode: err.statusCode,
       error: err.message,
     });
   }
@@ -16,6 +17,7 @@ export function errorMiddleware(
   console.error("Unexpected error:", err);
 
   return res.status(500).json({
+    statusCode: 500,
     error: "Internal Server Error",
   });
 }
