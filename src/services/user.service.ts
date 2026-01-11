@@ -23,5 +23,13 @@ export async function createUser(email: string, name?: string) {
 }
 
 export async function getUsers() {
-  return prisma.user.findMany();
+  return prisma.user.findMany({
+    include: {
+      roles: {
+        include: {
+          role: true,
+        },
+      },
+    },
+  });
 }
